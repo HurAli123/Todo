@@ -1,0 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#navbar-head{
+  padding: 0;
+  justify-content: flex-start;
+  gap: 15px;
+}
+ 
