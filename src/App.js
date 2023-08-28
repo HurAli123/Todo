@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
      <Navbar title="Text-utils" />
-     <TextForm heading="TextUtils-Modify Your Text:" />
+     <TextForm heading="TextUtils-Modify Your Text :" />
    </> 
   );
 };
