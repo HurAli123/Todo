@@ -85,7 +85,7 @@ export default function TextForm(props) {
 			<h5 className="my-3 p-1">{props.heading}</h5>
 
 			<div className="mb-3">
-        		<textarea className={`form-control bg-${props.mode} text-${props.mode==="light"?"dark":"light"}`} id="myBox" rows="7" value={text} onClick={Renamecopy} onChange={handleOnChange} placeholder="Enter your text here......."></textarea>
+        		<textarea className={`form-control p-3 bg-${props.mode} text-${props.mode==="light"?"dark":"light"}`} id="myBox" rows="7" value={text} onClick={Renamecopy} onChange={handleOnChange} placeholder="Enter your text here......."></textarea>
         	</div>
 			
       		<button className="btn btn-primary m-2" id="uppercase" onClick={handleUpClick}>Uppercase</button>
