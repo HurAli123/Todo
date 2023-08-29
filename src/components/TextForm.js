@@ -88,13 +88,14 @@ export default function TextForm(props) {
         		<textarea className={`form-control p-3 bg-${props.mode} text-${props.mode==="light"?"dark":"light"}`} id="myBox" rows="7" value={text} onClick={Renamecopy} onChange={handleOnChange} placeholder="Enter your text here......."></textarea>
         	</div>
 			
-      		<button className="btn btn-primary m-2" id="uppercase" onClick={handleUpClick}>Uppercase</button>
-      		<button className="btn btn-primary m-2" id="lowercase" onClick={handleUpClick}>Lowercase</button>
-      		<button className="btn btn-primary m-2" id="replace" onClick={handleReplace}>Replace</button>
-      		<button className="btn btn-primary m-2" id="copy" onClick={handleCopy}>{copy}</button>
-      		<button className="btn btn-primary m-2" id="space" onClick={handleSpaces}>Remove Extra Spaces</button>
-      		<button className="btn btn-primary m-2" id="fcapital" onClick={firstCapital}>Capitilize First Letters</button>
-
+			<div className="container p-0 d-flex flex-wrap">
+      			<button className="btn btn-primary m-2" id="uppercase" onClick={handleUpClick}>Uppercase</button>
+      			<button className="btn btn-primary m-2" id="lowercase" onClick={handleUpClick}>Lowercase</button>
+      			<button className="btn btn-primary m-2" id="replace" onClick={handleReplace}>Replace</button>
+      			<button className="btn btn-primary m-2" id="copy" onClick={handleCopy}>{copy}</button>
+      			<button className="btn btn-primary m-2" id="space" onClick={handleSpaces}>Remove Extra Spaces</button>
+      			<button className="btn btn-primary m-2" id="fcapital" onClick={firstCapital}>Capitilize First Letters</button>
+			  </div>
 			<div className="container p-0">
       			<button className="btn btn-danger m-2" id="clear" onClick={handleClearClick}>Clear</button>
 				<button className="btn btn-warning m-2" id="speak" onClick={speak}>Speak</button>
