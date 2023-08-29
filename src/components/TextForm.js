@@ -16,7 +16,7 @@ export default function TextForm(props) {
 
  
 	const handleUpClick = (event) => {
-		if(event.target.id=="uppercase")
+		if(event.target.id 	=== "uppercase")
 		{
 			let newText = text.toUpperCase();
 			setText(newText)	
@@ -69,28 +69,7 @@ export default function TextForm(props) {
 		window.speechSynthesis.speak(msg);
 	}
 	
-	const defaultTheme={
-				color:'black',
-				backgroundColor:'white'
-	}
-
-	const [theme,setTheme]=useState(defaultTheme)
-	const [button,setbtn]=useState("Dark")
-
-	let mode=document.getElementById('mode')
-	const toggler = () => {
-		if(theme.color === 'black'){
-			setTheme({
-				color:'white',
-				backgroundColor:'#333333 '
-			})
-			setbtn("Light")
-		}
-		else {
-			setTheme(defaultTheme)
-			setbtn("Dark")
-		}
-	}
+	
 
   //..............................................................................................
   return (
@@ -100,23 +79,20 @@ export default function TextForm(props) {
       <h5 className="my-3 p-1">{props.heading}</h5>
 
       <div className="mb-3">
-        <textarea style={theme} className="form-control" id="myBox" rows="8" value={text} onClick={Renamecopy} onChange={handleOnChange} placeholder="Enter your text here......."></textarea>
+        <textarea className={`form-control bg-${props.mode} text-${props.mode==="light"?"dark":"light"}`} id="myBox" rows="8" value={text} onClick={Renamecopy} onChange={handleOnChange} placeholder="Enter your text here......."></textarea>
       </div>
 			
       	<button className="btn btn-primary m-2" id="uppercase" onClick={handleUpClick}>Uppercase</button>
       	<button className="btn btn-primary m-2" id="lowercase" onClick={handleUpClick}>Lowercase</button>
       	<button className="btn btn-primary m-2" id="replace" onClick={handleReplace}>Replace</button>
       	<button className="btn btn-primary m-2" id="copy" onClick={handleCopy}>{copy}</button>
-      	<button className="btn btn-primary m-2" id="space" onClick={handleSpaces}>Remove spaces</button>
-      	<button className="btn btn-primary m-2" id="fcapital" onClick={firstCapital}>Capitilize first letters</button>
+      	<button className="btn btn-primary m-2" id="space" onClick={handleSpaces}>Remove Extra Spaces</button>
+      	<button className="btn btn-primary m-2" id="fcapital" onClick={firstCapital}>Capitilize First Letters</button>
 
-				<div className="container p-0">
-
+		<div className="container p-0">
       		<button className="btn btn-danger m-2" id="clear" onClick={handleClearClick}>Clear</button>
-					<button className="btn btn-warning m-2" id="speak" onClick={speak}>Speak</button>
-					<button className="btn m-2 border" style={theme} id="mode" onClick={toggler}>Enable {button} mode </button>
-
-				</div>
+			<button className="btn btn-warning m-2 text-light " id="speak" onClick={speak}>Speak</button>
+		</div>
 
     </div>
 
