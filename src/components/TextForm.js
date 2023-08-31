@@ -7,6 +7,7 @@ export default function TextForm(props) {
 	const[text,setText] = useState("") //value of text area
 	const[symbolCount, setSymbolCount] = useState(0); //number of symbols('.' , '?' , '!') in text area
 	const[copy,setcopy]=useState("Copy") //value of text in Copy button
+	const[paste,setpaste]=useState("Paste") //value of text in passte button
 	const newSymbolCount =(text.match(/\./g) || []).length+(text.match(/\?/g) || []).length+(text.match(/!/g) || []).length //count number of symbols ('.' , '?' , '!') in text area
 
 
@@ -43,6 +44,7 @@ export default function TextForm(props) {
 	//rename copied button to copy when text area is clicked
 	const Renamecopy = () => {
 		setcopy(<>Copy</>)
+		setpaste(<>Paste</>)
 	}
 	
 	//clear the text area when Clear button is clicked
@@ -70,6 +72,11 @@ export default function TextForm(props) {
 		setcopy(<>Copied &#10003;</>)
 	} 
 
+	//paste value of text in clipboard to textarea
+	const handlepaste = () => {		
+		setpaste(<>Pasted &#10003;</>)
+	}
+
 	//read out the text written in text area when Speak button is clicked
 	const speak = () => {
 		let msg = new SpeechSynthesisUtterance(text);
@@ -88,11 +95,12 @@ export default function TextForm(props) {
         		<textarea className={`form-control p-3 bg-${props.mode} text-${props.mode==="light"?"dark":"light"}`} id="myBox" rows="7" value={text} onClick={Renamecopy} onChange={handleOnChange} placeholder="Enter your text here......."></textarea>
         	</div>
 			
-			<div className="container p-0 d-flex flex-wrap">
+			<div className="container p-0 d-flex flex-wrap`arr1">
       			<button className="btn btn-primary m-2" id="uppercase" onClick={handleUpClick}>Uppercase</button>
       			<button className="btn btn-primary m-2" id="lowercase" onClick={handleUpClick}>Lowercase</button>
       			<button className="btn btn-primary m-2" id="replace" onClick={handleReplace}>Replace</button>
       			<button className="btn btn-primary m-2" id="copy" onClick={handleCopy}>{copy}</button>
+      			<button className="btn btn-primary m-2" id="paste" onClick={handlepaste}>{paste}</button>
       			<button className="btn btn-primary m-2" id="space" onClick={handleSpaces}>Remove Extra Spaces</button>
       			<button className="btn btn-primary m-2" id="fcapital" onClick={firstCapital}>Capitilize First Letters</button>
 			  </div>
