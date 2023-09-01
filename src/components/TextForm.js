@@ -7,7 +7,7 @@ export default function TextForm(props) {
 	const[text,setText] = useState("") //value of text area
 	const[symbolCount, setSymbolCount] = useState(0); //number of symbols('.' , '?' , '!') in text area
 	const[copy,setcopy]=useState("Copy") //value of text in Copy button
-	const[paste,setpaste]=useState("Paste") //value of text in passte button
+	const[paste,setpaste]=useState("Paste") //value of text in paste button
 	const newSymbolCount =(text.match(/\./g) || []).length+(text.match(/\?/g) || []).length+(text.match(/!/g) || []).length //count number of symbols ('.' , '?' , '!') in text area
 
 
@@ -73,7 +73,13 @@ export default function TextForm(props) {
 	} 
 
 	//paste value of text in clipboard to textarea
-	const handlepaste = () => {		
+	const handlepaste = () => {			
+
+			navigator.clipboard.readText().then(function (pastetext) {
+			  setText(text + pastetext)
+			}).catch(function (err) {
+			  console.error("Failed to read text from clipboard: ", err);
+			});
 		setpaste(<>Pasted &#10003;</>)
 	}
 
