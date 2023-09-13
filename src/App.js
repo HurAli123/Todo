@@ -65,6 +65,12 @@ const App = () => {
     closeDialog();
   };
 
+  const handleborder = (e) => {
+    
+    e.target.previousSibling.style.border = "4px solid black "
+  }
+
+
   return (
     <>
       <div className="main">
@@ -118,54 +124,101 @@ const App = () => {
               />
               <h6>Color</h6>
               <div className="colors">
-
+                <div className="radio">
+                  <span className="bg-radio" id="rd-white"></span>
                   <input
-                    type="radio" id="white" name="color" value="white" style={{accentColor:"white"}}
+                    type="radio"
+                    id="white"
+                    name="color"
+                    value="white"
+                    onClick={handleborder}
                     onChange={(e) => setColor(e.target.value)}
                   />
-
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-blue"></span>
                   <input
-                    type="radio" id="blue" name="color" value="#3da1ff" style={{accentColor:"blue"}} 
+                    type="radio"
+                    id="blue"
+                    name="color"
+                    value="#3da1ff"
+                    onClick={handleborder}
                     onChange={(e) => setColor(e.target.value)}
                   />
-    
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-yellow"></span>
                   <input
-                   type="radio" id="yellow" name="color" value="#f5f17a" style={{accentColor:"yellow"}}
-                   onChange={(e) => setColor(e.target.value)}
-                  />
-                 
-                  <input
-                    type="radio" id="red" name="color" value="#ff6e6e" style={{accentColor:"red"}}
+                    type="radio"
+                    id="yellow"
+                    name="color"
+                    value="#f5f17a"
+                    onClick={handleborder}
                     onChange={(e) => setColor(e.target.value)}
                   />
-
-                 <input
-                   type="radio" id="pink" name="color" value="#ff99e6" style={{accentColor:"pink"}}
-                   onChange={(e) => setColor(e.target.value)}
-                  />
- 
-                 <input
-                    type="radio" id="green" name="color" value="#8cff9c" style={{accentColor:"green"}}
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-red"></span>
+                  <input
+                    type="radio"
+                    id="red"
+                    name="color"
+                    value="#ff6e6e"
+                    onClick={handleborder}
                     onChange={(e) => setColor(e.target.value)}
                   />
-                 
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-pink"></span>
                   <input
-                    type="radio" id="purple" name="color" value="#c375ff" style={{accentColor:"purple"}}
+                    type="radio"
+                    id="pink"
+                    name="color"
+                    value="#ff99e6"
+                    onClick={handleborder}
                     onChange={(e) => setColor(e.target.value)}
-                  />  
-               
-                  <input
-                   type="radio" id="grey" name="color" value="lightgrey" style={{accentColor:"grey"}}
-                   onChange={(e) => setColor(e.target.value)}
                   />
-                  
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-green"></span>
+                  <input
+                    type="radio"
+                    id="green"
+                    name="color"
+                    value="#8cff9c"
+                    onClick={handleborder}
+                    onChange={(e) => setColor(e.target.value)}
+                  />
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-purple"></span>
+                  <input
+                    type="radio"
+                    id="purple"
+                    name="color"
+                    value="#c375ff"
+                    onClick={handleborder}
+                    onChange={(e) => setColor(e.target.value)}
+                  />
+                </div>
+                <div className="radio">
+                  <span className="bg-radio" id="rd-grey"></span>
+                  <input
+                    type="radio"
+                    id="grey"
+                    name="color"
+                    value="lightgrey"
+                    onClick={handleborder}
+                    onChange={(e) => setColor(e.target.value)}
+                  />
+                </div>
               </div>
 
               <button
                 className="btn btn-primary"
                 onClick={handleAddOrUpdateTask}
               >
-                {editIndex !== null?"Edit":"Add"}
+                {editIndex !== null ? "Edit" : "Add"}
               </button>
               <button className="btn btn-danger" onClick={closeDialog}>
                 Cancel

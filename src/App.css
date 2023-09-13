@@ -402,3 +402,43 @@ body {
   width: 100%;
   pointer-events: none;
 }
+.radio input{
+  opacity: 0;
+}
+.bg-radio{
+  width: 20px;
+  height: 20px;
+  z-index: -2;
+  position: absolute;
+  /* pointer-events: none; */
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.bg-radio:hover{
+  border: 2px solid white;
+}
+
+#rd-white{
+  background-color: white;
+}
+#rd-blue{
+  background-color: rgb(69, 143, 255);
+}
+#rd-green{
+  background-color: green;
+}
+#rd-red{
+  background-color: red;
+}
+#rd-purple{
+  background-color: purple;
+}
+#rd-pink{
+  background-color: pink;
+}
+#rd-grey{
+  background-color: grey;
+}
+#rd-yellow{
+  background-color: yellow;
+}
