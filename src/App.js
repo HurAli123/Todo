@@ -109,7 +109,7 @@ const App = () => {
           ></div>
           {showDialog && (
             <div className="dialog">
-              <h2>Add Task</h2>
+              <h2>{editIndex !== null ? "Edit Task" : "Add Task"}</h2>
               <input
                 type="text"
                 placeholder="Title"
