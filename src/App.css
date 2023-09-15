@@ -53,7 +53,7 @@ body {
 .tasks {
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 50px;
   flex-wrap: wrap;
 }
 
@@ -243,6 +243,8 @@ body {
   font-weight: 800;
   text-align: center;
   margin: 0;
+  word-wrap: break-word;
+  word-break: break-all;
   font-family: "Poppins", sans-serif;
   text-decoration: underline;
 }
@@ -355,9 +357,11 @@ body {
   padding: 10px 20px;
   cursor: pointer;
 }
-
+.dialog .btn-primary{
+  margin-right: 10px;
+}
 .dialog button:last-child {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   background-color: red;
   transition: all 0.5s;
 }
@@ -441,4 +445,113 @@ body {
 }
 #rd-yellow{
   background-color: yellow;
+}
+
+@media only screen and (max-width: 690px) {
+  .aside{
+    width: 100vw;
+    height: 20px;
+    flex-direction: row;
+    justify-content: left;
+    position: absolute;
+    top: 0;
+  }
+  .aside .logo a{
+    font-size: 10px;
+    padding: 10px 10px;
+  }
+  .aside .logo{
+    margin: 0;
+    margin-left:-20px;
+    font-size: 20px;
+  }
+  .aside .logo a::before,
+  .aside .logo a::after{
+    width: 10px;
+    height: 10px;
+  }
+  .aside .logo a span{
+    font-size: 20px;
+  }
+  .aside .info-parent{
+    display: none;
+  }
+  .aside .create{
+    position: absolute;
+    right: 5px;
+    border: none;
+    width: 200px;
+  }
+  .aside .create .button{
+    padding: 0;
+    width: auto;
+  }
+
+  .main{
+    position: absolute;
+  }
+  .main .tasks{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 0;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* align-content: center; */
+  }
+  .main-container{
+    flex-direction: row;
+    width: 100vw;
+    position: none;
+    padding-top: 100px;
+    position: absolute;
+    left: 0;
+    padding: auto;
+    padding-top: -200px;
+    justify-content: flex-start;
+    /* display: flex; */
+    /* align-items: flex-start; */
+    
+    /* align-items: center; */
+    /* justify-content: center;  */
+    /* padding: auto; */
+  }
+  .dialog{
+    width: 90vw;
+    height: auto;
+  }
+  .dialog textarea{
+    height: 65%;
+  }
+
+  .dialog button{
+    margin-top: 10px;
+    width: 100px;
+    font-size: 1rem;
+  }  
+  
+  .colors{
+    display: flex;
+    flex-wrap:wrap ;
+  }
+}
+
+@media only screen and (max-width: 380px){
+.aside .create .button span
+{
+  display: none;
+}
+ .aside .create .button i{
+  position: absolute;
+  right: 0;
+  color: rgb(210, 0, 0);
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+} 
+.aside .create .button:active{
+  background-color: rgb(83, 140, 190);
+}
 }

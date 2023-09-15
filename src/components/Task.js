@@ -1,17 +1,21 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import { useState } from "react";
+import exitsound from "../sounds/close.mp3"
+import complete from "../sounds/complete.mp3"
 
 export default function Task(props) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [status, setStatus] = useState("Pending");
-  const [opacity, setOpacity] = useState(0); // Initialize opacity to 1 (fully opaque)
+  const [opacity, setOpacity] = useState(0); 
 
   const handletick = () => {
-    setOpacity(opacity === 0 ? 0.9 : 0.9); // Toggle between 0.5 (semi-transparent) and 1 (fully opaque)
+    setOpacity(opacity === 0 ? 0.9 : 0.9); 
   };
 
   const handleclick = (event) => {
+    const exit = new Audio(exitsound)
+    exit.play()
+
     event.target.closest(".task").remove();
     props.setTotal(props.total - 1);
     isButtonDisabled === true
@@ -20,6 +24,9 @@ export default function Task(props) {
   };
 
   const handlecomplete = (event) => {
+    const completed = new Audio(complete)
+    completed.play()
+
     setStatus("Completed");
     event.target.closest(".task").style.background = "#21e60b";
     // event.target.closest(".task").style.opacity = "0.6"

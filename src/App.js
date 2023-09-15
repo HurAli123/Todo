@@ -1,9 +1,17 @@
 import "./App.css";
 import Task from "./components/Task";
 import { useState } from "react";
+import create from "./sounds/create.mp3"
+import exitsound from "./sounds/close.mp3"
+import click from "./sounds/click.mp3"
 
 //.................................................................................................................................
 const App = () => {
+
+  
+
+
+
   const [total, setTotal] = useState(0);
   const [complete, setComplete] = useState(0);
 
@@ -15,6 +23,10 @@ const App = () => {
   const [editIndex, setEditIndex] = useState(null); // Track the index of the task being edited
 
   const openDialog = (index) => {
+
+    const createaudio = new Audio(create)
+    createaudio.play()
+
     if (typeof index === "number") {
       // Edit mode: set the task's values in the dialog
       const taskToEdit = tasks[index];
@@ -34,10 +46,15 @@ const App = () => {
   };
 
   const closeDialog = () => {
+    const exit = new Audio(exitsound)
+    exit.play()
     setShowDialog(false);
   };
 
   const handleAddOrUpdateTask = () => {
+
+    
+   
     const newTask = {
       title: title,
       paragraph: paragraph,
@@ -45,6 +62,7 @@ const App = () => {
     };
 
     if (editIndex !== null) {
+      
       // Edit mode: update the task in the array
       const updatedTasks = [...tasks];
       updatedTasks[editIndex] = newTask;
@@ -66,15 +84,15 @@ const App = () => {
   };
 
   const handleborder = (e) => {
-    
-    e.target.previousSibling.style.border = "4px solid black "
-  }
-
+    e.target.previousSibling.style.border = "4px solid black ";
+    const exit = new Audio(exitsound)
+    exit.play()
+  };
 
   return (
     <>
       <div className="main">
-        <div className="aside">
+        <div className="aside mobile-navbar">
           <div className="logo">
             <a href="/">
               <span>T</span>oDo
@@ -83,7 +101,7 @@ const App = () => {
 
           <div className="create">
             <button className="button" onClick={openDialog}>
-              <i className="fa fa-plus"></i>Create New Task
+              <i className="fa fa-plus"></i><span>Create New Task</span>
             </button>
           </div>
 
@@ -114,13 +132,19 @@ const App = () => {
                 type="text"
                 placeholder="Title"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) =>{ setTitle(e.target.value)
+                  const clicksound = new Audio(click)
+                  clicksound.play()
+                }}
               />
               <textarea
                 rows={8}
                 placeholder="Description"
                 value={paragraph}
-                onChange={(e) => setParagraph(e.target.value)}
+                onChange={(e) => {setParagraph(e.target.value)
+                  const clicksound = new Audio(click)
+                  clicksound.play()
+                }}
               />
               <h6>Color</h6>
               <div className="colors">
@@ -233,7 +257,8 @@ const App = () => {
                 setTotal={setTotal}
                 complete={complete}
                 setComplete={setComplete}
-                editTask={() => openDialog(index)}
+                editTask={() =>{  
+                  openDialog(index)}}
                 key={index}
                 title={task.title}
                 paragraph={task.paragraph}
