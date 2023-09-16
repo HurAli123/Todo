@@ -199,6 +199,7 @@ body {
   width: 200px;
   min-height: 200px;
   height: fit-content;
+
   justify-content: space-evenly;
   align-items: center;
 }
@@ -509,6 +510,7 @@ body {
     padding: auto;
     padding-top: 100px;
     justify-content: flex-start;
+    margin-top: 20px;
     /* display: flex; */
     /* align-items: flex-start; */
     
