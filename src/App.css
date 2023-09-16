@@ -53,18 +53,16 @@ body {
 .tasks {
   width: 100%;
   display: flex;
-  gap: 50px;
+  gap: 0px;
   flex-wrap: wrap;
 }
 
-.tasks div {
-  margin: 0;
-}
 
 .task {
   height: 200px;
   width: 200px;
   border: 2px solid black;
+  margin: 8px;
 }
 
 .aside {
