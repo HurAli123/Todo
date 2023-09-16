@@ -507,7 +507,7 @@ body {
     position: absolute;
     left: 0;
     padding: auto;
-    padding-top: -100px;
+    padding-top: 100px;
     justify-content: flex-start;
     /* display: flex; */
     /* align-items: flex-start; */
