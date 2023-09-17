@@ -37,6 +37,7 @@ const App = () => {
   const openDialog = (index) => {
 
     const createaudio = new Audio(create)
+    createaudio.play()
     
 
     if (typeof index === "number") {
