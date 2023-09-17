@@ -1,20 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import exitsound from "../sounds/close.mp3"
-import complete from "../sounds/complete.mp3"
+import exitsound from "../sounds/close.mp3";
+import complete from "../sounds/complete.mp3";
 
 export default function Task(props) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [status, setStatus] = useState("Pending");
-  const [opacity, setOpacity] = useState(0); 
+  const [opacity, setOpacity] = useState(0);
 
   const handletick = () => {
-    setOpacity(opacity === 0 ? 0.9 : 0.9); 
+    setOpacity(opacity === 0 ? 0.9 : 0.9);
   };
 
   const handleclick = (event) => {
-    const exit = new Audio(exitsound)
-    exit.play()
+    const exit = new Audio(exitsound);
+    exit.play();
 
     event.target.closest(".task").remove();
     props.setTotal(props.total - 1);
@@ -24,8 +24,8 @@ export default function Task(props) {
   };
 
   const handlecomplete = (event) => {
-    const completed = new Audio(complete)
-    completed.play()
+    const completed = new Audio(complete);
+    completed.play();
 
     setStatus("Completed");
     event.target.closest(".task").style.background = "#21e60b";
@@ -50,8 +50,12 @@ export default function Task(props) {
             >
               {status === "Pending" ? "Complete" : "Completed"}
             </button>
-            <button class="edit btn btn-danger" onClick={props.editTask}>
-              <i class="fa-solid fa-pen-to-square"></i> Edit
+            <button 
+              class="edit btn btn-danger" 
+              onClick={props.editTask}
+              disabled={isButtonDisabled}
+              >
+                <i class="fa-solid fa-pen-to-square"></i> Edit
             </button>
           </div>
           <button class="delete" onClick={handleclick}>

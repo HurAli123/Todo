@@ -287,6 +287,7 @@ body {
   height: 40px;
   font-size: 12px;
   text-align: center;
+
 }
 
 .top .delete i {
@@ -294,7 +295,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  /* padding: 2px; */
   border-radius: 100%;
 }
 
@@ -538,20 +539,59 @@ body {
   }
 }
 
-@media only screen and (max-width: 380px){
-.aside .create .button span
-{
-  display: none;
-}
- .aside .create .button i{
+.custom-alert {
   position: absolute;
-  right: 0;
-  color: rgb(210, 0, 0);
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 50%;
-} 
-.aside .create .button:active{
-  background-color: rgb(83, 140, 190);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 1em;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  width: 200px;
+  margin: 0 auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.custom-alert-content {
+  margin-bottom: 15px;
 }
+
+.custom-alert-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.custom-alert-button:hover {
+  background-color: #0056b3;
+}
+
+@media only screen and (max-width: 380px){
+  .aside .create .button span
+  {
+    display: none;
+  }
+   .aside .create .button i{
+    position: absolute;
+    right: 0;
+    color: rgb(210, 0, 0);
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+  } 
+  .aside .create .button:active{
+    background-color: rgb(83, 140, 190);
+  .custom-alert{
+    width: 10%;
+  }
+  }
+  }

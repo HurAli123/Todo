@@ -1,31 +1,43 @@
 import "./App.css";
+
 import Task from "./components/Task";
+import CustomAlert from './components/Alert';
+
 import { useState } from "react";
 import create from "./sounds/create.mp3"
 import exitsound from "./sounds/close.mp3"
 import click from "./sounds/click.mp3"
+import notification from "./sounds/notification.mp3"
+
 
 //.................................................................................................................................
 const App = () => {
 
-  
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
+  const showAlert = () => {
+    setIsAlertOpen(true);
+  };
 
+  const closeAlert = () => {
+    setIsAlertOpen(false);
+  };
 
   const [total, setTotal] = useState(0);
   const [complete, setComplete] = useState(0);
 
+  const [message,setMessage] = useState("")
   const [tasks, setTasks] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [title, setTitle] = useState("");
   const [paragraph, setParagraph] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("White");
   const [editIndex, setEditIndex] = useState(null); // Track the index of the task being edited
 
   const openDialog = (index) => {
 
     const createaudio = new Audio(create)
-    createaudio.play()
+    
 
     if (typeof index === "number") {
       // Edit mode: set the task's values in the dialog
@@ -53,12 +65,11 @@ const App = () => {
 
   const handleAddOrUpdateTask = () => {
 
-    
-   
+    if(title!=="" && paragraph!==""){
     const newTask = {
       title: title,
       paragraph: paragraph,
-      color: color,
+      color: color===""?"White":color,
     };
 
     if (editIndex !== null) {
@@ -81,6 +92,28 @@ const App = () => {
 
     // Close the dialog
     closeDialog();
+  }
+  else{
+    const notificationsound = new Audio(notification)
+    notificationsound.play()  
+    setTimeout(()=>{
+      
+  if(title==="" && paragraph==="")
+  {
+    setMessage(<>Please enter a <b>Title</b> and <b>description</b></>)
+    showAlert()
+  }
+  else if(title===""){
+    setMessage(<><b>Please enter a <b></b>Title</b></>)
+    showAlert()
+  }
+  else {
+    setMessage(<>Please enter a <b>Description</b></>)
+    showAlert()
+  }
+
+    },100)
+}
   };
 
   const handleborder = (e) => {
@@ -91,6 +124,8 @@ const App = () => {
 
   return (
     <>
+    
+
       <div className="main">
         <div className="aside mobile-navbar">
           <div className="logo">
@@ -122,6 +157,12 @@ const App = () => {
         </div>
 
         <div className={`main-container`}>
+        {isAlertOpen && (
+        <CustomAlert
+          message={message}
+          onClose={closeAlert}
+        />
+      )}
           <div
             className={`blur  ${showDialog ? "blurred-background" : ""}`}
           ></div>
