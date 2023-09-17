@@ -21,6 +21,8 @@ const App = () => {
 
   const closeAlert = () => {
     setIsAlertOpen(false);
+    const exit = new Audio(exitsound)
+    exit.play()
   };
 
   const [total, setTotal] = useState(0);
@@ -118,10 +120,26 @@ const App = () => {
   };
 
   const handleborder = (e) => {
-    e.target.previousSibling.style.border = "4px solid black ";
+    
+    e.target.previousSibling.style.border = "4px solid black"
     const exit = new Audio(exitsound)
     exit.play()
   };
+ 
+  const dayElements = document.querySelectorAll(".border-highlight");
+  dayElements.forEach((dayElement) => {
+    dayElement.addEventListener("click", function () {
+      // Change the style of the clicked 'day' element
+      this.previousSibling.style.border = "4px solid black";
+  
+      // Iterate through all other 'day' elements and change their style
+      dayElements.forEach((otherDayElement) => {
+        if (otherDayElement !== this) {
+          otherDayElement.previousSibling.style.border= "2px solid black"; // Change the style as needed
+        }
+      });
+    });
+  }); 
 
   return (
     <>
@@ -191,8 +209,9 @@ const App = () => {
               <h6>Color</h6>
               <div className="colors">
                 <div className="radio">
-                  <span className="bg-radio" id="rd-white"></span>
-                  <input
+                  <div className="bg-radio" id="rd-white"></div>
+                  <input className="border-highlight"
+
                     type="radio"
                     id="white"
                     name="color"
@@ -202,8 +221,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-blue"></span>
-                  <input
+                  <div className="bg-radio" id="rd-blue"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="blue"
                     name="color"
@@ -213,8 +232,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-yellow"></span>
-                  <input
+                  <div className="bg-radio" id="rd-yellow"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="yellow"
                     name="color"
@@ -224,8 +243,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-red"></span>
-                  <input
+                  <div className="bg-radio" id="rd-red"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="red"
                     name="color"
@@ -235,8 +254,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-pink"></span>
-                  <input
+                  <div className="bg-radio" id="rd-pink"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="pink"
                     name="color"
@@ -246,8 +265,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-green"></span>
-                  <input
+                  <div className="bg-radio" id="rd-green"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="green"
                     name="color"
@@ -257,8 +276,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-purple"></span>
-                  <input
+                  <div className="bg-radio" id="rd-purple"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="purple"
                     name="color"
@@ -268,8 +287,8 @@ const App = () => {
                   />
                 </div>
                 <div className="radio">
-                  <span className="bg-radio" id="rd-grey"></span>
-                  <input
+                  <div className="bg-radio" id="rd-grey"></div>
+                  <input className="border-highlight"
                     type="radio"
                     id="grey"
                     name="color"

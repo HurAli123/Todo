@@ -418,9 +418,6 @@ body {
   border-radius: 50%;
   border: 2px solid black;
 }
-.bg-radio:hover{
-  border: 2px solid white;
-}
 
 #rd-white{
   background-color: white;
